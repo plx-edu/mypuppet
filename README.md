@@ -1,2 +1,0 @@
-# mypuppet
-puppet wf3
