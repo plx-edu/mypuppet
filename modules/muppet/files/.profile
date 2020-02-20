@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo '"Hello from $myvar"
+echo "Hello from $USER"
 
 cat << "EOF"
 

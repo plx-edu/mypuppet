@@ -1,40 +1,39 @@
 # class 
-class muppet {
-	$varmuppet = ""
+class muppet($myvar) {
 
-	# creation user "$varmuppet"
-	user { '$varmuppet':
-	        ensure => 'present',
-	        shell => '/bin/bash',
-	        home => '/home/$varmuppet',
-	        gid => '$varmuppet',
-	        require => Group['$varmuppet'],
-	        before => File['/home/$varmuppet'],
+	# creation user "$myvar"
+	user { "$myvar":
+	        ensure => "present",
+	        shell => "/bin/bash",
+	        home => "/home/$myvar",
+	        gid => "$myvar",
+	        require => Group["$myvar"],
+	        before => File["/home/$myvar"],
 	}
 
-	group { '$varmuppet':
-	        ensure => 'present',
-	}
-
-
-	file { '/home/$varmuppet':
-	        #path => '/home/$varmuppet',
-	        ensure => 'directory',
-	        owner => '$varmuppet',
-	        group => '$varmuppet',
-	        before => File['/home/$varmuppet/.profile'],
+	group { "$myvar":
+	        ensure => "present",
 	}
 
 
-	file { '/home/$varmuppet/.profile':
-	        #path => '/home/$varmuppet/.profile',
-	        ensure => 'file',
-	        #content => 'echo "I was created by puppet, signed $varmuppet"',
+	file { "/home/$myvar":
+	        #path => "/home/$myvar",
+	        ensure => "directory",
+	        owner => "$myvar",
+	        group => "$myvar",
+	        before => File["/home/$myvar/.profile"],
+	}
+
+
+	file { "/home/$myvar/.profile":
+	        #path => "/home/$myvar/.profile",
+	        ensure => "file",
+	        #content => "echo "I was created by puppet, signed $myvar"",
 
 					# puppet va chercher automatiquement dans le dossier "files"
-					source => 'puppet:///modules/muppet/.profile',
-	        owner => '$varmuppet',
-	        group => '$varmuppet',
+					source => "puppet:///modules/muppet/.profile",
+	        owner => "$myvar",
+	        group => "$myvar",
 	}
 }
 
