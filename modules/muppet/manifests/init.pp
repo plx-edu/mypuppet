@@ -27,7 +27,10 @@ class muppet {
 	file { '/home/kermit/.profile':
 	        #path => '/home/kermit/.profile',
 	        ensure => 'file',
-	        content => 'echo "I was created by puppet, signed Kermit"',
+	        #content => 'echo "I was created by puppet, signed Kermit"',
+
+					# puppet va chercher automatiquement dans le dossier "files"
+					source => 'puppet:///modules/muppet/.profile',
 	        owner => 'kermit',
 	        group => 'kermit',
 	}
