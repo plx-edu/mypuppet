@@ -30,8 +30,13 @@ class muppet($myvar) {
 	        ensure => "file",
 	        #content => "echo "I was created by puppet, signed $myvar"",
 
+					content => epp('muppet/.profile.epp', {
+						myvar => "$myvar"
+					}),
+
 					# puppet va chercher automatiquement dans le dossier "files"
-					source => "puppet:///modules/muppet/.profile",
+					# source removed for content (template)
+					#source => "puppet:///modules/muppet/.profile",
 	        owner => "$myvar",
 	        group => "$myvar",
 	}
