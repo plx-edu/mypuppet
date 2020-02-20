@@ -4,7 +4,7 @@ node default {
 
 # node <agent_hostname>
 node myagent {
-	notify {'Ich bin ein Muppet!':}
+	notify {'Ich bin ein Muppet! (bis)':}
 	include muppet
 	include muppet::peggy
 }
