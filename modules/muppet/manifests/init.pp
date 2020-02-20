@@ -1,38 +1,40 @@
 # class 
 class muppet {
-	# creation user "kermit"
-	user { 'kermit':
+	$varmuppet = ""
+
+	# creation user "$varmuppet"
+	user { '$varmuppet':
 	        ensure => 'present',
 	        shell => '/bin/bash',
-	        home => '/home/kermit',
-	        gid => 'kermit',
-	        require => Group['kermit'],
-	        before => File['/home/kermit'],
+	        home => '/home/$varmuppet',
+	        gid => '$varmuppet',
+	        require => Group['$varmuppet'],
+	        before => File['/home/$varmuppet'],
 	}
 
-	group { 'kermit':
+	group { '$varmuppet':
 	        ensure => 'present',
 	}
 
 
-	file { '/home/kermit':
-	        #path => '/home/kermit',
+	file { '/home/$varmuppet':
+	        #path => '/home/$varmuppet',
 	        ensure => 'directory',
-	        owner => 'kermit',
-	        group => 'kermit',
-	        before => File['/home/kermit/.profile'],
+	        owner => '$varmuppet',
+	        group => '$varmuppet',
+	        before => File['/home/$varmuppet/.profile'],
 	}
 
 
-	file { '/home/kermit/.profile':
-	        #path => '/home/kermit/.profile',
+	file { '/home/$varmuppet/.profile':
+	        #path => '/home/$varmuppet/.profile',
 	        ensure => 'file',
-	        #content => 'echo "I was created by puppet, signed Kermit"',
+	        #content => 'echo "I was created by puppet, signed $varmuppet"',
 
 					# puppet va chercher automatiquement dans le dossier "files"
 					source => 'puppet:///modules/muppet/.profile',
-	        owner => 'kermit',
-	        group => 'kermit',
+	        owner => '$varmuppet',
+	        group => '$varmuppet',
 	}
 }
 

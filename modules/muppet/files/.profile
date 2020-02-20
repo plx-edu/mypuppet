@@ -1,6 +1,6 @@
 #!/bin/sh
 
-echo 'Hello from kermit'
+echo '"Hello from $myvar"
 
 cat << "EOF"
 
